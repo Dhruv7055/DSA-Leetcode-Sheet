@@ -1,1 +1,1 @@
-This folder contains easy leetcode question of leetcode.
+This folder contains easy leetcode questions.
