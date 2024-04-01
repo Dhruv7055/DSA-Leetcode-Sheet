@@ -36,9 +36,47 @@ Acceptance Rate
 
 
 
-class Solution {  // T.C => O(N log N)
+
+// Moore Voting Algorithm
+class Solution { // Time Complexity O(logN) Space Complexity O(1)
     public int majorityElement(int[] nums) {
-        Arrays.sort(nums);
-        return nums[nums.length/2];
+        return majority_Element(nums); 
+    }
+    public static int majority_Element(int []v) {
+        //size of the given array:
+        int n = v.length;
+        int cnt = 0; // count
+        int el = 0; // Element
+
+        //applying the algorithm:
+        for (int i = 0; i < n; i++) {
+            if (cnt == 0) {
+                cnt = 1;
+                el = v[i];
+            } else if (el == v[i]) cnt++;
+            else cnt--;
+        }
+
+        //checking if the stored element
+        // is the majority element:
+        int cnt1 = 0;
+        for (int i = 0; i < n; i++) {
+            if (v[i] == el) cnt1++;
+        }
+
+        if (cnt1 > (n / 2)) return el;
+        return -1;
     }
 }
+
+
+
+
+// class Solution {
+//     public int majorityElement(int[] nums) {
+//         Arrays.sort(nums); // Time Complexity O(logN) Space Complexity O(1)
+//         return nums[nums.length/2];
+//     }
+    
+// }
+
